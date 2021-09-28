@@ -342,13 +342,16 @@ before the actual command is run. You might want to use an
 do some general cleanup or set up dynamic configuration.
 
 ```ruby
-Spring.after_fork do
+Spring.after_fork do |cb|
   # run arbitrary code
 end
 ```
 
 If you want to register multiple callbacks you can simply call
 `Spring.after_fork` multiple times with different blocks.
+
+If you accept an argument, it will contain an object with information about the
+Spring client request and server state.
 
 ### Watching files and directories
 
